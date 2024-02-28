@@ -6,13 +6,13 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-lg font-semibold">MyWebsite</div>
         <div className="space-x-4">
-          <Link href="/">
+          <Link legacyBehavior href="/">
             <a className="hover:text-gray-200">Home</a>
           </Link>
-          <Link href="/about">
+          <Link legacyBehavior href="/about">
             <a className="hover:text-gray-200">À Propos</a>
           </Link>
-          <Link href="/news">
+          <Link legacyBehavior href="/news">
             <a className="hover:text-gray-200">Nouvelle</a>
           </Link>
         </div>

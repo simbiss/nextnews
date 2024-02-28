@@ -1,13 +1,32 @@
 import Link from 'next/link';
+import Navbar from '../components/navbar';
 
 const AboutPage = () => {
   return (
-    <div className="container mx-auto px-4">
-      <h1 className="text-4xl font-bold text-center my-6">À propos</h1>
-      <p className="text-lg my-4">Ceci est une page à propos dans une application Next.js.</p>
-      <Link legacyBehavior href="/">
-        <a className="text-blue-500 hover:text-blue-700 transition duration-300">Accueil</a></Link>
-    </div>
+    <>
+      <Navbar />
+      <div className="container mx-auto px-4">
+        <main className="my-8">
+          <h1 className="text-4xl font-bold text-center mb-6">À propos de nous</h1>
+          <div className="bg-white shadow-lg rounded-lg p-8 mb-6">
+            <p className="text-xl text-gray-700">
+              Nous sommes une entreprise passionnée par [votre domaine ici]. Notre mission est de [votre mission ici].
+            </p>
+            <p className="text-xl text-gray-700 mt-4">
+              Fondée en [année], notre entreprise [plus de détails ici].
+            </p>
+          </div>
+          <div className="text-center">
+            <img
+              src="/path-to-your-image.jpg" // Remplacez avec le chemin de votre image
+              alt="Image à propos de nous"
+              className="inline-block rounded-lg"
+            />
+          </div>
+          {/* Vous pouvez ajouter plus de sections avec des informations supplémentaires ici */}
+        </main>
+      </div>
+    </>
   );
 };
 
