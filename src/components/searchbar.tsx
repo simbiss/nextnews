@@ -36,7 +36,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         <select
           value={language}
           onChange={(e) => setLanguage(e.target.value)}
-          className="p-2 border border-gray-300 rounded"
+          className="p-2 border border-gray-300 rounded text-black"
         >
           <option value="fr">Français</option>
           <option value="en">Anglais</option>
@@ -47,7 +47,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
-          className="p-2 border border-gray-300 rounded"
+          className="p-2 border border-gray-300 rounded text-black"
         >
           <option value="relevancy">Pertinence</option>
           <option value="popularity">Popularité</option>
