@@ -1,5 +1,6 @@
 import Navbar from '../components/navbar';
 import SearchBar from '../components/searchbar';
+import Footer from '../components/footer';
 import { NextPage } from 'next';
 
 
@@ -11,12 +12,14 @@ const News: NextPage = () => {
     };
 
     return (
-      <>
+      <div className="flex flex-col min-h-screen">
         <Navbar />
-        <div className="container mx-auto px-4 pt-8">
-            <SearchBar onSearch={handleSearch} />
+        <div className="flex-grow container mx-auto px-4 pt-8">
+          <SearchBar onSearch={handleSearch} />
+          {/* Autres contenus de la page */}
         </div>
-      </>
+        <Footer />
+      </div>
     );
   };
 
