@@ -16,11 +16,9 @@ const News: NextPage = () => {
         <Navbar />
         <div className="flex-grow container mx-auto px-4 pt-8">
           <SearchBar onSearch={handleSearch} />
-          {/* Autres contenus de la page */}
         </div>
         <Footer />
       </div>
     );
   };
-
   export default News;
