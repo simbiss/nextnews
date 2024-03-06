@@ -1,5 +1,5 @@
 const Footer: React.FC = () => {
-    const year = new Date().getFullYear(); // Dynamiquement obtenir l'année actuelle
+    const year = new Date().getFullYear(); 
   
     return (
       <footer className="bg-gray-800 text-white text-center p-4 mt-8 w-full">

@@ -1,29 +1,29 @@
 import { useState, FormEvent } from 'react';
 
 interface SearchBarProps {
- onSearch: (query: string, language: string, sortBy: string) => void;
+  onSearch: (query: string, language: string, sortBy: string) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
- const [searchTerm, setSearchTerm] = useState('');
- const [language, setLanguage] = useState('fr');
- const [sortBy, setSortBy] = useState('publishedAt');
- const [results, setResults] = useState(1); // Simule le nombre de résultats
- const [isAdvancedSearchVisible, setIsAdvancedSearchVisible] = useState(false);
- const [isLoading, setIsLoading] = useState(false); // Ajout d'un état de chargement
+  const [searchTerm, setSearchTerm] = useState('');
+  const [language, setLanguage] = useState('fr');
+  const [sortBy, setSortBy] = useState('publishedAt');
+  const [results, setResults] = useState(1); // Simule le nombre de résultats
+  const [isAdvancedSearchVisible, setIsAdvancedSearchVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // Ajout d'un état de chargement
 
- const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     setIsLoading(true); // Déclenche le chargement
     onSearch(searchTerm, language, sortBy);
     setIsLoading(false); // Termine le chargement après la recherche
- };
+  };
 
- const toggleAdvancedSearch = () => {
+  const toggleAdvancedSearch = () => {
     setIsAdvancedSearchVisible(!isAdvancedSearchVisible);
- };
+  };
 
- return (
+  return (
     <div className="bg-white p-4 shadow-md rounded-lg">
       <form onSubmit={handleSubmit} className="flex flex-col md:flex-row items-center">
         <div className="flex flex-row items-center flex-grow mb-4 md:mb-0">
@@ -82,7 +82,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         )}
       </div>
     </div>
- );
+  );
 };
 
 export default SearchBar;
