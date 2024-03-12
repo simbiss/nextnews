@@ -7,9 +7,12 @@ import { NextPage } from 'next';
 
 const News: NextPage = () => {
   const [articles, setArticles] = useState([]); 
+  const [totalResults, setTotoalResults] = useState(0);
 
   
   const handleSearch = async (query: string, language: string, sortBy: string) => {
+
+    setArticles([]);  //reset articles list
     const apiKey = '5e0f222023eb4d9380fea145a16a52ff'; 
     const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&apiKey=${apiKey}`;
     
@@ -17,6 +20,7 @@ const News: NextPage = () => {
       const response = await fetch(url);
       const data = await response.json();
       setArticles(data.articles); // Update the articles state with the fetched data
+      setTotoalResults(data.totalResults)
     } catch (error) {
       console.error('Fetching news failed', error);
     }
@@ -26,8 +30,7 @@ const News: NextPage = () => {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <div className="flex-grow container mx-auto px-4 pt-8">
-        <SearchBar onSearch={handleSearch} />
-        {/* Render articles here */}
+        <SearchBar onSearch={handleSearch} totalResults={totalResults} />
 
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {articles.map((article, index) => (

@@ -17,7 +17,7 @@ const ArticleCard = ({ urlToImage, title, description, url, publishedAt }) => {
         />
       )}
       <div className="p-4 flex flex-col flex-grow">
-        <h2 className="font-bold text-xl mb-2">{title}</h2>
+        <h2 className="text-black font-bold text-xl mb-2">{title}</h2>
         <p className="text-gray-700 text-base flex-grow">{description}</p>
         <p className="text-gray-600 text-xs">{formatDate(publishedAt)}</p>
         <a

@@ -4,11 +4,10 @@ interface SearchBarProps {
   onSearch: (query: string, language: string, sortBy: string) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch, totalResults }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [language, setLanguage] = useState('fr');
   const [sortBy, setSortBy] = useState('publishedAt');
-  const [results, setResults] = useState(1); // Simule le nombre de résultats
   const [isAdvancedSearchVisible, setIsAdvancedSearchVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false); // Ajout d'un état de chargement
 
@@ -44,7 +43,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
             🔍
           </button>
         </div>
-        <span className="text-gray-600 ml-4 mb-4 md:mb-0">{results} results</span>
+        <span className="text-gray-600 ml-4 mb-4 md:mb-0">{totalResults} results</span>
       </form>
       <div className="bg-white p-4 shadow-md rounded-lg">
         <button
