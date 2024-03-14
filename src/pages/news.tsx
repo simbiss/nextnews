@@ -6,15 +6,19 @@ import ArticleCard from '../components/articlecard';
 import { NextPage } from 'next';
 
 const News: NextPage = () => {
-  const [articles, setArticles] = useState([]); 
+  const [articles, setArticles] = useState([]);
   const [totalResults, setTotoalResults] = useState(0);
-
-  
   const handleSearch = async (query: string, language: string, sortBy: string) => {
 
     setArticles([]);  //reset articles list
-    const apiKey = '5e0f222023eb4d9380fea145a16a52ff'; 
-    const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&apiKey=${apiKey}`;
+    const apiKey = '5e0f222023eb4d9380fea145a16a52ff';
+    const encodedQuery = encodeURIComponent(query);
+    const languages = language;
+    if (language != '') {
+      var url = `https://newsapi.org/v2/everything?q=${encodedQuery}&languages=${languages}&apiKey=${apiKey}`;
+    } else {
+      var url = `https://newsapi.org/v2/everything?q=${encodedQuery}&apiKey=${apiKey}`;
+    }
     
     try {
       const response = await fetch(url);
@@ -32,19 +36,18 @@ const News: NextPage = () => {
       <div className="flex-grow container mx-auto px-4 pt-8">
         <SearchBar onSearch={handleSearch} totalResults={totalResults} />
 
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {articles.map((article, index) => (
-          <ArticleCard
-            key={index}
-            urlToImage={article.urlToImage}
-            title={article.title}
-            description={article.description}
-            url={article.url}
-            publishedAt={article.publishedAt}
-          />
-        ))}
-      </div>
-
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {articles.map((article, index) => (
+            <ArticleCard
+              key={index}
+              urlToImage={article.urlToImage}
+              title={article.title}
+              description={article.description}
+              url={article.url}
+              publishedAt={article.publishedAt}
+            />
+          ))}
+        </div>
         <Footer />
       </div>
     </div>

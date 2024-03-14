@@ -6,7 +6,7 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch, totalResults }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [language, setLanguage] = useState('fr');
+  const [language, setLanguage] = useState('');
   const [sortBy, setSortBy] = useState('publishedAt');
   const [isAdvancedSearchVisible, setIsAdvancedSearchVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false); // Ajout d'un état de chargement
