@@ -13,7 +13,7 @@ const AboutPage = () => {
             Ceci est mon projet personnel visant à découvrir le framework Next.js, codé avec TypeScript et utilisant TailwindCSS. Pour le moment, ce site web propose une page de recherche d'actualités où vous pouvez entrer des mots-clés via la barre de recherche.
             </p>
             <p className="text-xl text-gray-700 mt-4">
-              Site créer par [Simon Bissonnette] en Janvier 2024 <a href="https://github.com/simbiss/nextnews"></a>
+              Site créer par Simon Bissonnette en Janvier 2024 <br></br> <a href="https://github.com/simbiss/nextnews" className="text-blue-500 underline"> Mon Github </a>
             </p> 
           </div>   
         </main>
