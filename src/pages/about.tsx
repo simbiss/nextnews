@@ -10,20 +10,12 @@ const AboutPage = () => {
           <h1 className="text-4xl font-bold text-center mb-6">À propos de nous</h1>
           <div className="bg-white shadow-lg rounded-lg p-8 mb-6">
             <p className="text-xl text-gray-700">
-              Nous sommes une entreprise passionnée par [votre domaine ici]. Notre mission est de [votre mission ici].
+            Ceci est mon projet personnel visant à découvrir le framework Next.js, codé avec TypeScript et utilisant TailwindCSS. Pour le moment, ce site web propose une page de recherche d'actualités où vous pouvez entrer des mots-clés via la barre de recherche.
             </p>
             <p className="text-xl text-gray-700 mt-4">
-              Fondée en [année], notre entreprise [plus de détails ici].
-            </p>
-          </div>
-          <div className="text-center">
-            <img
-              src="/path-to-your-image.jpg" // Remplacez avec le chemin de votre image
-              alt="Image à propos de nous"
-              className="inline-block rounded-lg"
-            />
-          </div>
-          {/* Vous pouvez ajouter plus de sections avec des informations supplémentaires ici */}
+              Site créer par [Simon Bissonnette] en Janvier 2024 <a href="https://github.com/simbiss/nextnews"></a>
+            </p> 
+          </div>   
         </main>
       </div>
     </>

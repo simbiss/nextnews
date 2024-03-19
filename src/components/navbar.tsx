@@ -9,11 +9,11 @@ const Navbar = () => {
           <Link legacyBehavior href="/">
             <a className="hover:text-gray-200">Home</a>
           </Link>
-          <Link legacyBehavior href="/about">
-            <a className="hover:text-gray-200">À Propos</a>
-          </Link>
           <Link legacyBehavior href="/news">
             <a className="hover:text-gray-200">Nouvelle</a>
+          </Link>
+          <Link legacyBehavior href="/about">
+            <a className="hover:text-gray-200">À Propos</a>
           </Link>
         </div>
       </div>
