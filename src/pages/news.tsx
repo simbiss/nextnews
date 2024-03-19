@@ -11,7 +11,7 @@ const News: NextPage = () => {
   const handleSearch = async (query: string, language: string, sortBy: string) => {
 
     setArticles([]);  //reset articles list
-    const apiKey = '5e0f222023eb4d9380fea145a16a52ff';
+    const apiKey = process.env.NEXT_PUBLIC_NEWSAPI_KEY;
     const encodedQuery = encodeURIComponent(query);
     const languages = language;
     if (language != '') {
