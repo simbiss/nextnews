@@ -25,7 +25,7 @@ const News: NextPage = () => {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setArticles(data.articles); // Update the articles state with the fetched data
+      setArticles(data.articles); 
       setTotoalResults(data.totalResults)
     } catch (error) {
       console.error('Fetching news failed', error);

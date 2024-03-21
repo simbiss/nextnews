@@ -10,13 +10,13 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, totalResults }) => {
   const [language, setLanguage] = useState('');
   const [sortBy, setSortBy] = useState('publishedAt');
   const [isAdvancedSearchVisible, setIsAdvancedSearchVisible] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); // Ajout d'un état de chargement
+  const [isLoading, setIsLoading] = useState(false); 
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    setIsLoading(true); // Déclenche le chargement
+    setIsLoading(true); 
     onSearch(searchTerm, language, sortBy);
-    setIsLoading(false); // Termine le chargement après la recherche
+    setIsLoading(false); 
   };
 
   const toggleAdvancedSearch = () => {
