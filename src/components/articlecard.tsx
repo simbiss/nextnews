@@ -1,8 +1,16 @@
 import React from 'react';
 
-const ArticleCard = ({ urlToImage, title, description, url, publishedAt }) => {
-  // A helper function to format the date to a more readable form
-  const formatDate = (dateStr) => {
+interface ArticleCardProps {
+  urlToImage?: string;
+  title: string;
+  description: string;
+  url: string;
+  publishedAt: string;
+}
+
+const ArticleCard: React.FC<ArticleCardProps> = ({ urlToImage, title, description, url, publishedAt }) => {
+
+  const formatDate = (dateStr: string): string => {
     const date = new Date(dateStr);
     return date.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
   };
@@ -17,7 +25,7 @@ const ArticleCard = ({ urlToImage, title, description, url, publishedAt }) => {
         />
       )}
       <div className="p-4 flex flex-col flex-grow">
-        <h2 className="text-black font-bold text-xl mb-2">{title}</h2>
+        <h2 className="text-xl font-bold text-xl mb-2">{title}</h2>
         <p className="text-gray-700 text-base flex-grow">{description}</p>
         <p className="text-gray-600 text-xs">{formatDate(publishedAt)}</p>
         <a
