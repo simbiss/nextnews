@@ -39,7 +39,7 @@ const News: NextPage = () => {
         <SearchBar onSearch={handleSearch} totalResults={totalResults} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {articles.map((article, index) => (
+          {articles.map((article:any, index) => (
             <ArticleCard
               key={index}
               urlToImage={article.urlToImage}

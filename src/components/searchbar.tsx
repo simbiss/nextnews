@@ -2,6 +2,7 @@ import { useState, FormEvent } from 'react';
 
 interface SearchBarProps {
   onSearch: (query: string, language: string, sortBy: string) => void;
+  totalResults: number;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch, totalResults }) => {
