@@ -14,14 +14,9 @@ const News: NextPage = () => {
     const apiKey = process.env.NEXT_PUBLIC_NEWSAPI_KEY;
     const encodedQuery = encodeURIComponent(query);
     const languages = language;
-    if (language != '') {
-      console.log("lang:", language, "query: ", query)
-      var url = `https://newsapi.org/v2/everything?q=${encodedQuery}&languages=${languages}&pageSize=20&apiKey=${apiKey}`;
-    } else {
-      console.log("lang:", language,"query: ", query)
-      var url = `https://newsapi.org/v2/everything?q=${encodedQuery}$pageSize=20&apiKey=${apiKey}`;
-    }
-    
+    console.log("lang:", language,"query: ", query)
+    var url = `https://newsapi.org/v2/everything?q=${encodedQuery}$pageSize=20&apiKey=${apiKey}`;
+
     try {
       const response = await fetch(url);
       const data = await response.json();
