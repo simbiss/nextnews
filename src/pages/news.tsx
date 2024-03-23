@@ -15,7 +15,7 @@ const News: NextPage = () => {
     const encodedQuery = encodeURIComponent(query);
     const languages = language;
     console.log("lang:", language,"query: ", query)
-    var url = `https://newsapi.org/v2/everything?q=${encodedQuery}&pageSize=20&apiKey=${apiKey}`;
+    var url = `https://newsapi.org/v2/everything?q=${encodedQuery}$pageSize=20&apiKey=${apiKey}`;
 
     try {
       const response = await fetch(url);
