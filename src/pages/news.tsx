@@ -38,7 +38,7 @@ const News: NextPage = () => {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setArticles(data.articles); 
+      setArticles(data.articles);
       setTotoalResults(data.totalResults)
     } catch (error) {
       console.error('Fetching news failed', error);
@@ -61,7 +61,7 @@ const News: NextPage = () => {
         <SearchBar onSearch={handleSearch} totalResults={totalResults} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {articles.map((article:any, index) => (
+          {articles.map((article: any, index) => (
             <ArticleCard
               key={index}
               urlToImage={article.urlToImage}
@@ -73,8 +73,11 @@ const News: NextPage = () => {
           ))}
         </div>
 
-        <Pagination totalPages={totalPages} currentPage={currentPage} paginate={paginate}/>
+        <p className="text-base text-center text-orange-400 mt-20 mb-20">
+          Attention! Cette fonctionnalité fonctionne seulement en localhost à cause de l'imitation d'api. Pour ce faire, veuillez cloner le projet et exécuter le serveur local avec la commande suivante: npm run dev
+        </p>
 
+        <Pagination totalPages={totalPages} currentPage={currentPage} paginate={paginate} />
         <Footer />
       </div>
     </div>
