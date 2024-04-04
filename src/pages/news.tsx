@@ -3,24 +3,38 @@ import Navbar from '../components/navbar';
 import SearchBar from '../components/searchbar';
 import Footer from '../components/footer';
 import ArticleCard from '../components/articlecard';
+import Pagination from '../components/pagination';
 import { NextPage } from 'next';
 
 const News: NextPage = () => {
   const [articles, setArticles] = useState([]);
   const [totalResults, setTotoalResults] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const ariclePerPage = 20;
+
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchLanguage, setSearchLanguage] = useState('');
+  const [searchSortBy, setSearchSortBy] = useState('');
+
   const handleSearch = async (query: string, language: string, sortBy: string) => {
 
-    setArticles([]);  //reset articles list
+    setSearchQuery(query);
+    setSearchLanguage(language);
+    setSearchSortBy(sortBy);
+
+    //setArticles([]);  //reset articles list
     const apiKey = process.env.NEXT_PUBLIC_NEWSAPI_KEY;
     const encodedQuery = encodeURIComponent(query);
-    if (language != '') {
+    let url = `https://newsapi.org/v2/everything?q=${encodedQuery}&pageSize=${ariclePerPage}&page=${currentPage}&apiKey=${apiKey}`;
+
+    if (language) {
       console.log("lang:", language, "query: ", query)
-      var url = `https://newsapi.org/v2/everything?q=${encodedQuery}&language=${language}&apiKey=${apiKey}`;
-    } else {
-      console.log("lang:", language,"query: ", query)
-      var url = `https://newsapi.org/v2/everything?q=${encodedQuery}&apiKey=${apiKey}`;
+      url += `&language=${language}`;
+    } if (sortBy) {
+      console.log("sortBy:", sortBy, "query: ", query)
+      url += `&sortBy=${sortBy}`;
     }
-    
+
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -30,6 +44,15 @@ const News: NextPage = () => {
       console.error('Fetching news failed', error);
     }
   };
+
+  const paginate = (pageNumber: number) => {
+    if (pageNumber > 5) return;
+    setCurrentPage(pageNumber);
+    handleSearch(searchQuery, searchLanguage, searchSortBy);
+  }
+
+  const totalPages = Math.ceil(totalResults / ariclePerPage);
+
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -49,6 +72,9 @@ const News: NextPage = () => {
             />
           ))}
         </div>
+
+        <Pagination totalPages={totalPages} currentPage={currentPage} paginate={paginate}/>
+
         <Footer />
       </div>
     </div>
