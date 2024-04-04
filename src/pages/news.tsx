@@ -13,10 +13,9 @@ const News: NextPage = () => {
     setArticles([]);  //reset articles list
     const apiKey = process.env.NEXT_PUBLIC_NEWSAPI_KEY;
     const encodedQuery = encodeURIComponent(query);
-    const languages = language;
     if (language != '') {
       console.log("lang:", language, "query: ", query)
-      var url = `https://newsapi.org/v2/everything?q=${encodedQuery}&languages=${languages}&apiKey=${apiKey}`;
+      var url = `https://newsapi.org/v2/everything?q=${encodedQuery}&language=${language}&apiKey=${apiKey}`;
     } else {
       console.log("lang:", language,"query: ", query)
       var url = `https://newsapi.org/v2/everything?q=${encodedQuery}&apiKey=${apiKey}`;
