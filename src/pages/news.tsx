@@ -16,10 +16,10 @@ const News: NextPage = () => {
     const languages = language;
     if (language != '') {
       console.log("lang:", language, "query: ", query)
-      var url = `https://newsapi.org/v2/everything?q=${encodedQuery}&languages=${languages}&pageSize=20&apiKey=${apiKey}`;
+      var url = `https://newsapi.org/v2/everything?q=${encodedQuery}&languages=${languages}&apiKey=${apiKey}`;
     } else {
       console.log("lang:", language,"query: ", query)
-      var url = `https://newsapi.org/v2/everything?q=${encodedQuery}$pageSize=20&apiKey=${apiKey}`;
+      var url = `https://newsapi.org/v2/everything?q=${encodedQuery}&apiKey=${apiKey}`;
     }
     
     try {
