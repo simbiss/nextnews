@@ -1,7 +1,7 @@
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-
+/*
 type NewsMapProps = {
   newsData: any[]; // Define a more specific type based on your news data structure
 };
@@ -25,4 +25,4 @@ const NewsMap: React.FC<NewsMapProps> = ({ newsData }) => {
   );
 };
 
-export default NewsMap;
+export default NewsMap;*/
