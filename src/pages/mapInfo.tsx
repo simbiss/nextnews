@@ -12,8 +12,6 @@ const MapComponent: React.FC<{ apiKey: string }> = ({ apiKey }) => {
           case Status.FAILURE:
             return <p>Error loading map</p>;
           default:
-            // Il faut retourner un élément valide même si aucun cas n'est atteint
-            // Retourner un élément vide ou un message par défaut
             return <></>; // Retourne un fragment vide si aucun des cas n'est atteint
         }
       };
