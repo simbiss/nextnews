@@ -12,6 +12,9 @@ const Navbar = () => {
           <Link legacyBehavior href="/news">
             <a className="hover:text-gray-200">Nouvelle</a>
           </Link>
+          <Link legacyBehavior href="/mapInfo">
+            <a className="hover:text-gray-200">Map</a>
+          </Link>
           <Link legacyBehavior href="/about">
             <a className="hover:text-gray-200">À Propos</a>
           </Link>
