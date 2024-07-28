@@ -7,8 +7,8 @@ import Pagination from '../components/pagination';
 import { NextPage } from 'next';
 
 const News: NextPage = () => {
-  const [articles, setArticles] = useState([]);
-  const [totalResults, setTotoalResults] = useState(0);
+  const [articles, setArticles] = useState<any[]>([]);
+  const [totalResults, setTotalResults] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const ariclePerPage = 20;
 
@@ -17,12 +17,10 @@ const News: NextPage = () => {
   const [searchSortBy, setSearchSortBy] = useState('');
 
   const handleSearch = async (query: string, language: string, sortBy: string) => {
-
     setSearchQuery(query);
     setSearchLanguage(language);
     setSearchSortBy(sortBy);
 
-    //setArticles([]);  //reset articles list
     const apiKey = process.env.NEXT_PUBLIC_NEWSAPI_KEY;
     const encodedQuery = encodeURIComponent(query);
     let url = `https://newsapi.org/v2/everything?q=${encodedQuery}&pageSize=${ariclePerPage}&page=${currentPage}&apiKey=${apiKey}`;
@@ -30,7 +28,8 @@ const News: NextPage = () => {
     if (language) {
       console.log("lang:", language, "query: ", query)
       url += `&language=${language}`;
-    } if (sortBy) {
+    }
+    if (sortBy) {
       console.log("sortBy:", sortBy, "query: ", query)
       url += `&sortBy=${sortBy}`;
     }
@@ -38,10 +37,11 @@ const News: NextPage = () => {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      setArticles(data.articles);
-      setTotoalResults(data.totalResults)
+      setArticles(data.articles || []);
+      setTotalResults(data.totalResults || 0);
     } catch (error) {
       console.error('Fetching news failed', error);
+      setArticles([]); // Ensure articles is reset to an empty array on error
     }
   };
 
@@ -53,7 +53,6 @@ const News: NextPage = () => {
 
   const totalPages = Math.ceil(totalResults / ariclePerPage);
 
-
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -61,7 +60,7 @@ const News: NextPage = () => {
         <SearchBar onSearch={handleSearch} totalResults={totalResults} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {articles.map((article: any, index) => (
+          {articles && articles.length > 0 ? articles.map((article: any, index) => (
             <ArticleCard
               key={index}
               urlToImage={article.urlToImage}
@@ -70,7 +69,9 @@ const News: NextPage = () => {
               url={article.url}
               publishedAt={article.publishedAt}
             />
-          ))}
+          )) : (
+            <p className="text-center">No articles found.</p>
+          )}
         </div>
 
         <p className="text-base text-center text-orange-400 mt-20 mb-20">
